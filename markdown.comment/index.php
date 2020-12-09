@@ -37,8 +37,15 @@ function comment($any) {
                     $blocks[$id] = $part;
                 // Other block(s)
                 } else {
-                    // Only remove HTML tag(s) outside the code block
-                    $blocks[$id] = \strip_tags($part);
+                    // We are now outside the code block!
+                    $part = \preg_replace_callback('/`[^\n]+`|<(?:f|ht)tps?:\/\/[^\n]+?>/', function($m) {
+                        return \htmlspecialchars(\preg_replace('/\s+/', ' ', $m[0]));
+                    }, $part);
+                    $part = \strip_tags($part); // Remove HTML tag(s)
+                    $part = \preg_replace_callback('/`[^\n]+`|&lt;(?:f|ht)tps?:\/\/[^\n]+?&gt;/', function($m) {
+                        return \htmlspecialchars_decode($m[0]);
+                    }, $part);
+                    $blocks[$id] = $part;
                 }
                 ++$id;
             }
