@@ -1,6 +1,6 @@
-<?php namespace _\lot\x\markdown;
+<?php namespace x;
 
-function comment($any) {
+function markdown__comment($any) {
     foreach ($_POST['comment'] ?? [] as $k => $v) {
         if (!\is_string($v)) {
             continue;
@@ -59,9 +59,9 @@ function comment($any) {
     $_POST['comment']['type'] = 'Markdown';
 }
 
-\Route::hit('.comment/*', __NAMESPACE__ . "\\comment", 0);
+\Route::hit('.comment/*', __NAMESPACE__ . "\\markdown__comment", 0);
 
 // Optional `comment.hint` extension
 if (null !== \State::get("x.comment\\.hint")) {
-    \State::set("x.comment\\.hint.hint", 'All HTML tags will be removed. Use <a href="https://mecha-cms.com/article/markdown-syntax" target="_blank">Markdown</a> syntax to style your comment body.');
+    \State::set("x.comment\\.hint.content", 'All HTML tags will be removed. Use <a href="https://mecha-cms.com/article/markdown-syntax" target="_blank">Markdown</a> syntax to style your comment body.');
 }

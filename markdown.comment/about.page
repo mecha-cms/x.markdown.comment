@@ -3,7 +3,7 @@ title: Markdown Comment
 description: Using Markdown syntax in comments.
 author: Taufik Nurrohman
 type: Markdown
-version: 1.0.1
+version: 1.0.2
 
 use:
   '.\lot\x\markdown': 1
