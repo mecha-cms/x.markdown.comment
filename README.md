@@ -1,5 +1,5 @@
-Markdown Comment Extension for Mecha
-====================================
+Markdown Comment Extension for [Mecha](https://github.com/mecha-cms/mecha)
+==========================================================================
 
 Release Notes
 -------------
