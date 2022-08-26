@@ -1,6 +1,9 @@
 <?php namespace x;
 
-function markdown__comment($any) {
+function markdown__comment($content, $path, $query, $hash) {
+    if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+        return $content;
+    }
     foreach ($_POST['comment'] ?? [] as $k => $v) {
         if (!\is_string($v)) {
             continue;
@@ -57,11 +60,28 @@ function markdown__comment($any) {
     }
     // Force comment type to `Markdown`
     $_POST['comment']['type'] = 'Markdown';
+    return $content;
 }
 
-\Route::hit('.comment/*', __NAMESPACE__ . "\\markdown__comment", 0);
+\Hook::set('route.comment', __NAMESPACE__ . "\\markdown__comment", 90);
 
 // Optional `comment.hint` extension
 if (null !== \State::get("x.comment\\.hint")) {
     \State::set("x.comment\\.hint.content", 'All HTML tags will be removed. Use <a href="https://mecha-cms.com/article/markdown-syntax" target="_blank">Markdown</a> syntax to style your comment body.');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
