@@ -41,11 +41,11 @@ function markdown__comment($content, $path, $query, $hash) {
                 // Other block(s)
                 } else {
                     // We are now outside the code block!
-                    $part = \preg_replace_callback('/`[^\n]+`|<(?:f|ht)tps?:\/\/[^\n]+?>/', function($m) {
+                    $part = \preg_replace_callback('/`[^\n]+`|<(?:f|ht)tps?:\/\/[^\n]+?>/', function ($m) {
                         return \htmlspecialchars(\preg_replace('/\s+/', ' ', $m[0]));
                     }, $part);
                     $part = \strip_tags($part); // Remove HTML tag(s)
-                    $part = \preg_replace_callback('/`[^\n]+`|&lt;(?:f|ht)tps?:\/\/[^\n]+?&gt;/', function($m) {
+                    $part = \preg_replace_callback('/`[^\n]+`|&lt;(?:f|ht)tps?:\/\/[^\n]+?&gt;/', function ($m) {
                         return \htmlspecialchars_decode($m[0]);
                     }, $part);
                     $blocks[$id] = $part;
@@ -69,19 +69,3 @@ function markdown__comment($content, $path, $query, $hash) {
 if (null !== \State::get("x.comment\\.hint")) {
     \State::set("x.comment\\.hint.content", 'All HTML tags will be removed. Use <a href="https://mecha-cms.com/article/markdown-syntax" target="_blank">Markdown</a> syntax to style your comment body.');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
