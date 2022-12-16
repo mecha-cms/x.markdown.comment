@@ -70,6 +70,6 @@ if (null !== \State::get("x.comment\\.hint")) {
     \State::set("x.comment\\.hint.content", 'All HTML tags will be removed. Use <a href="https://mecha-cms.com/article/markdown-syntax" target="_blank">Markdown</a> syntax to style your comment body.');
 }
 
-if (\defined("\\TEST") && 'x.markdown.comment' === \TEST) {
-    require __DIR__ . \D . 'test.php';
+if (\defined("\\TEST") && 'x.markdown.comment' === \TEST && \is_file($test = __DIR__ . \D . 'test.php')) {
+    require $test;
 }
