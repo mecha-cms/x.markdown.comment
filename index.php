@@ -1,6 +1,6 @@
-<?php namespace x;
+<?php namespace x\markdown__comment;
 
-function markdown__comment($content, $path, $query, $hash) {
+function route($content, $path, $query, $hash) {
     if ('POST' !== $_SERVER['REQUEST_METHOD']) {
         return $content;
     }
@@ -63,7 +63,7 @@ function markdown__comment($content, $path, $query, $hash) {
     return $content;
 }
 
-\Hook::set('route.comment', __NAMESPACE__ . "\\markdown__comment", 90);
+\Hook::set('route.comment', __NAMESPACE__ . "\\route", 90);
 
 // Optional `comment.hint` extension
 if (null !== \State::get("x.comment\\.hint")) {
