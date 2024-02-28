@@ -12,7 +12,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
 echo '<form method="post">';
 echo '<p>';
 echo '<textarea name="comment[content]" rows="' . (substr_count($content, "\n") + 1) . '" style="box-sizing: border-box; resize: vertical; width: 100%;">';
-echo From::HTML($content);
+echo htmlspecialchars($content);
 echo '</textarea>';
 echo '</p>';
 echo '<p>';

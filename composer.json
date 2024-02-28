@@ -3,7 +3,7 @@
   "license": "GPL-3.0-or-later",
   "name": "mecha-cms/x.markdown.comment",
   "require": {
-    "mecha-cms/x.comment": "^2.0.0",
+    "mecha-cms/x.comment": "^3.0.0",
     "mecha-cms/x.markdown": "^3.0.0"
   }
 }

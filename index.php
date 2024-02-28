@@ -66,8 +66,8 @@ function route__comment($content, $path, $query, $hash) {
 \Hook::set('route.comment', __NAMESPACE__ . "\\route__comment", 90);
 
 // Optional `comment.hint` extension
-if (null !== \State::get("x.comment\\.hint")) {
-    \State::set("x.comment\\.hint.content", 'All HTML tags will be removed. Use <a href="https://mecha-cms.com/article/markdown-syntax" target="_blank">Markdown</a> syntax to style your comment body.');
+if (isset($state->x->{'comment.hint'})) {
+    \State::set("x.comment\\.hint.content", 'All HTML tags will be removed. Use <a href="https://mecha-cms.com/article/markdown-syntax" tabindex="-1" target="_blank">Markdown</a> syntax to style your comment body.');
 }
 
 if (\defined("\\TEST") && 'x.markdown.comment' === \TEST && \is_file($test = __DIR__ . \D . 'test.php')) {
