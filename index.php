@@ -41,11 +41,11 @@ function route__comment($content, $path, $query, $hash) {
                 // Other block(s)
                 } else {
                     // We are now outside the code block!
-                    $part = \preg_replace_callback('/`[^\n]+`|<(?:f|ht)tps?:\/\/[^\n]+?>/', function ($m) {
+                    $part = \preg_replace_callback('/`[^\n]+`|<(?>f|ht)tps?:\/\/[^\n]+?>/', static function ($m) {
                         return \htmlspecialchars(\preg_replace('/\s+/', ' ', $m[0]));
                     }, $part);
                     $part = \strip_tags($part); // Remove HTML tag(s)
-                    $part = \preg_replace_callback('/`[^\n]+`|&lt;(?:f|ht)tps?:\/\/[^\n]+?&gt;/', function ($m) {
+                    $part = \preg_replace_callback('/`[^\n]+`|&lt;(?>f|ht)tps?:\/\/[^\n]+?&gt;/', static function ($m) {
                         return \htmlspecialchars_decode($m[0]);
                     }, $part);
                     $blocks[$id] = $part;

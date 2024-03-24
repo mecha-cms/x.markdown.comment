@@ -1,6 +1,6 @@
 <?php
 
-$content = file_get_contents(__DIR__ . D . 'test.txt');
+$content = file_get_contents(__DIR__ . D . 'test.md');
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
     x\markdown__comment\route__comment(null, null, null, null);
